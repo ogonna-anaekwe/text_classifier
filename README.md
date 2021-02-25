@@ -29,7 +29,7 @@ source bin/requirements.sh
 ```
 4. In another terminal window, serve the model on port 8501:
 ```
-source bin/serve_model.sh
+source bin/start_server.sh
 ```
 5. Test the model in another terminal using cURL or the python3 cli:
 ```
@@ -40,7 +40,7 @@ curl -d '{"instances": ["this is such a horrible movie", "this is such a great m
 ```
 python3 app/main.py
 ```
-In the cURL request, `<version>` is `1` or `2`, so update the placeholder accordingly. In `./app/main.py`, you can switch between versions 1 and 2 by updating the `version` variable in the `predict_sentiment` method.
+In the cURL request, `<version>` is `1` or `2`, so update the placeholder accordingly. In `./app/main.py`, you can switch between versions `1` and `2` by updating the `version` variable in the `predict_sentiment` method.
 
 ### Shut Down
 To shut down the application, open a new terminal window and enter:

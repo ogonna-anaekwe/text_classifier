@@ -13,11 +13,11 @@ ENV MODEL_BASE_PATH=/models
 RUN mkdir -p ${MODEL_BASE_PATH}
 
 
-# the only required piece is the model name in order to differentiate endpoints
+# the name of the model
+# helps differentiate different models
 ENV MODEL_NAME=text_classifier
 
-# this script runs the model server so we can use environment variables
-# while also passing in arguments from the docker command line
+# start the model server. this serves the model
 RUN echo '#!/bin/bash \n\n\
 tensorflow_model_server --port=8500 --rest_api_port=8501 \
 --model_name=${MODEL_NAME} --model_base_path=${MODEL_BASE_PATH}/${MODEL_NAME}/ \
