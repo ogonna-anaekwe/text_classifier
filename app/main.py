@@ -5,7 +5,7 @@ import uuid
 
 logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 
-def predict_sentiment(instances):
+def predict_sentiment(reviews):
     """
     Predicts the sentiment of imdb reviews
 
@@ -29,15 +29,15 @@ def predict_sentiment(instances):
         # update to a different version as you please. 
         # all versions are shown in model.config. 
         # available versions: 1 and 2.
-        version = 2
+        version = 1
         url = f'{base_url}{model_name}/versions/{version}:predict'
 
         logging.info(f'{transaction_id}: serving version {version} of the text classifier model')
 
-        total_reviews = len(instances)
+        total_reviews = len(reviews)
         logging.info(f'{transaction_id}: fetching sentiment for {total_reviews} {"reviews" if total_reviews > 1 else "review"}')
         # construct data string and headers        
-        data = json.dumps({"signature_name": "serving_default", "instances": instances})
+        data = json.dumps({"signature_name": "serving_default", "instances": reviews})
         headers = {"content-type": "application/json"}
 
         # ping the model endpoint
@@ -47,16 +47,16 @@ def predict_sentiment(instances):
         if status_code >= 400:            
             return f'server returned {status_code}.\nconfirm that version {version} of the model exists and is being served in the model.config file'
         
-        reviews = []
+        classified_reviews = []
         for idx in range(0, total_reviews):            
             predictions = json.loads(json_response.text)['predictions'][idx]  
             review_score = predictions[0]      
 
             if review_score >= 0:
-                reviews.append({'review': instances[idx], 'sentiment': 'positive review', 'sentiment_score': review_score})
+                classified_reviews.append({'review': reviews[idx], 'sentiment': 'positive review', 'sentiment_score': review_score})
             else:
-                reviews.append({'review': instances[idx], 'sentiment': 'negative review', 'sentiment_score': review_score})        
-        return reviews
+                classified_reviews.append({'review': reviews[idx], 'sentiment': 'negative review', 'sentiment_score': review_score})        
+        return classified_reviews
 
     except Exception as e:
         logging.info(e)
