@@ -2,8 +2,6 @@ import requests
 import json
 from format_logs import format_logs
 
-logger = format_logs()
-
 def predict_sentiment(reviews):
     """
     Predicts the sentiment of imdb reviews
@@ -15,6 +13,9 @@ def predict_sentiment(reviews):
         reviews: a list of objects showing each review alongside a sentiment (i.e. positive or negative) and a sentiment score.
     """
     try:               
+        global logger
+        logger = format_logs()
+
         # tf serving rest endpoint
         port = '8501'
         base_url = f'http://localhost:{port}/v1/models/'
@@ -24,7 +25,7 @@ def predict_sentiment(reviews):
         # update to a different version as you please. 
         # all versions are shown in model.config. 
         # available versions: 1 and 2.
-        version = 2
+        version = 1
         url = f'{base_url}{model_name}/versions/{version}:predict'
 
         logger.info(f'serving version {version} of the text classifier model')

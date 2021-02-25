@@ -12,6 +12,8 @@ echo "copying model.config file into container named ${CONTAINER_NAME} in your c
 docker cp ./model.config ${CONTAINER_NAME}:${MODEL_FOLDER}
 echo "copied model.config file into container named ${CONTAINER_NAME} in the ${MODEL_FOLDER} folder"
 
+echo "restarting server..."
+
 # stop container and rebuild with the recently copied model.config file
 docker stop ${CONTAINER_NAME}
 
