@@ -21,8 +21,10 @@ cd text_classifier
 docker info --format "{{.OperatingSystem}}"
 ```
  If you get errors, it means you don't have Docker on your local machine. Follow the instructions [here](https://docs.docker.com/docker-for-mac/install/) to install Docker.
+
 3. Activate a virtual environment to isolate dependencies and install dependencies: 
 ```
+sh
 source bin/requirements.sh
 ```
 4. In another terminal window, serve the model on port 8501:
