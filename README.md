@@ -5,7 +5,7 @@
 4. Enable users to switch between both versions.
 
 ### Requirements
-To run this application locally, you will need:
+To run this application locally, you need to have / do the following:
 1. macOS (you could use Windows as well, however, the instructions here were tested on Mac).
 2. [python3](https://programwithus.com/learn/python/install-python3-mac).
 3. Docker.
