@@ -45,7 +45,7 @@ def predict_sentiment(reviews):
         status_code = json_response.status_code
 
         if status_code >= 400:            
-            return f'server returned {status_code}.\nconfirm that version {version} of the model exists and is being served in the model.config file'
+            return f'{transaction_id}: server returned {status_code}.\nconfirm that version {version} of the model exists and is being served in the model.config file'
         
         classified_reviews = []
         for idx in range(0, total_reviews):            
@@ -59,7 +59,7 @@ def predict_sentiment(reviews):
         return classified_reviews
 
     except Exception as e:
-        logging.info(e)
+        logging.info(f'{transaction_id}: {e}')
 
 if __name__=='__main__':
     # update the review sample to test out different reviews
