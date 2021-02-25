@@ -9,7 +9,7 @@ To run this application locally, you will need:
 1. macOS (you could use Windows as well, however, the instructions here were tested on Mac).
 2. [python3](https://programwithus.com/learn/python/install-python3-mac).
 3. Docker.
-4. Run the [notebook](https://colab.research.google.com/github/ogonna-anaekwe/text_classifier/blob/master/Text_Classification_with_Movie_Reviews_(Data_Eng_).ipynb) and unzip the downloaded files in the downloads folder of your Mac.
+4. Run the [notebook](https://colab.research.google.com/github/ogonna-anaekwe/text_classifier/blob/master/Text_Classification_with_Movie_Reviews_(Data_Eng_).ipynb) and unzip the downloaded files in the `Downloads` folder of your Mac.
 
 ### Run Locally
 1. Clone repo and go into project directory:
@@ -21,7 +21,7 @@ cd text_classifier
 ```
 docker info --format "{{.OperatingSystem}}"
 ```
- If you get errors, it means you don't have Docker on your local machine. Follow the instructions [here](https://docs.docker.com/docker-for-mac/install/) to install Docker.
+ If you get errors, it means you don't have Docker on your Mac. Follow the instructions [here](https://docs.docker.com/docker-for-mac/install/) to install Docker.
 
 3. Activate a virtual environment to isolate dependencies and install dependencies: 
 ```
