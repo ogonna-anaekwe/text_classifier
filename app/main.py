@@ -24,7 +24,7 @@ def predict_sentiment(reviews):
         # update to a different version as you please. 
         # all versions are shown in model.config. 
         # available versions: 1 and 2.
-        version = 23
+        version = 2
         url = f'{base_url}{model_name}/versions/{version}:predict'
 
         logger.info(f'serving version {version} of the text classifier model')
