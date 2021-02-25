@@ -9,6 +9,7 @@ To run this application locally, you will need:
 1. macOS (you could use Windows as well, however, the instructions here were tested on Mac).
 2. [python3](https://programwithus.com/learn/python/install-python3-mac).
 3. Docker.
+4. Run the [notebook](https://colab.research.google.com/github/ogonna-anaekwe/text_classifier/blob/master/Text_Classification_with_Movie_Reviews_(Data_Eng_).ipynb) and unzip the downloaded files in the downloads folder of your Mac.
 
 ### Run Locally
 1. Clone repo and go into project directory:
@@ -32,13 +33,14 @@ source bin/serve_model.sh
 ```
 5. Test the model in another terminal using cURL or the python3 cli:
 ```
-curl -d '{"instances": ['this is such a horrible movie', 'this is such a great movie', 'this is such a horrible and great movie']}' \
-    -X POST http://localhost:8501/v1/models/text_classifier/versions/2:predict
+curl -d '{"instances": ["this is such a horrible movie", "this is such a great movie", "this is such a horrible and great movie"]}' \
+    -X POST http://localhost:8501/v1/models/text_classifier/versions/<version>:predict
 ```
 **OR**
 ```
 python3 app/main.py
 ```
+In the cURL request, `<version>` is `1` or `2`, so update the placeholder accordingly. In `./app/main.py`, you can switch between versions 1 and 2 by updating the `version` variable in the `predict_sentiment` method.
 
 ### Shut Down
 To shut down the application, open a new terminal window and enter:

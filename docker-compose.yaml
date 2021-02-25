@@ -8,5 +8,5 @@ services:
         - "8501:8501"
     volumes: 
       - type: bind
-        source: ~/Downloads/content/text_classifier
+        source: ~/Downloads/content/text_classifier # this is the folder that contains the model/s and model versions
         target: /models/text_classifier      
