@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  text_classifier:
+    image: text_classifier
+    build: .
+    ports:
+        - "8501:8501"
+    volumes: 
+      - type: bind
+        source: ~/Downloads/content/text_classifier
+        target: /models/text_classifier      
