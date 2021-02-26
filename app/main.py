@@ -52,7 +52,11 @@ def predict_sentiment(reviews):
         status_code = json_response.status_code
 
         if status_code >= 400:                        
-            return f'server returned {status_code}.\nconfirm that version {version} of the model exists and is being served in the model.config file'
+            return f'server returned {status_code}. \
+                    confirm that version {version} of the model exists in the model.config file. \
+                    confirm that the model.config file has been correctly copied into the text_classifier \
+                    folder in the container\'s file system. \
+                    without the model.config file, only the latest version of the model (in this case version 2) is served.' 
         
         classified_reviews = []
         for idx in range(0, total_reviews):            

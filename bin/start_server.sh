@@ -1,7 +1,6 @@
 #!/bin/bash
-
-# CONTAINER_NAME='text_classifier_text_classifier_1'
-CONTAINER_NAME=`docker ps --format "{{.Names}}"`
+CONTAINER_NAME='text_classifier_text_classifier_1'
+# CONTAINER_NAME=`docker ps --format "{{.Names}}"`
 
 MODEL_FOLDER='/models/text_classifier'
 
