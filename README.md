@@ -17,21 +17,27 @@ To run this application locally, you need to have / do the following:
 git clone git@github.com:ogonna-anaekwe/text_classifier.git
 cd text_classifier
 ```
+
 2. Ensure you have Docker installed. One way to confirm is by running the following in your terminal:
 ```sh
 docker info --format "{{.OperatingSystem}}"
 ```
  If you get errors, it means you don't have Docker on your Mac. Follow the instructions [here](https://docs.docker.com/docker-for-mac/install/) to install Docker.
 
-3. Activate a virtual environment to isolate dependencies and install dependencies: 
+3. Serve the model on port 8501:
 ```sh
-source bin/requirements.sh
+source bin/start_server_error.sh
 ```
-4. In another terminal window, serve the model on port 8501:
 ```sh
 source bin/start_server.sh
 ```
-5. Test the model in another terminal using `cURL` or the `python3 cli`:
+
+4. In another terminal window, activate a virtual environment to isolate dependencies and install dependencies: 
+```sh
+source bin/requirements.sh
+```
+
+5. Test the model using `cURL` or the `python3 cli`:
 ```sh
 curl -d '{"instances": ["this is such a horrible movie", "this is such a great movie", "this is such a horrible and great movie"]}' \
     -X POST http://localhost:8501/v1/models/text_classifier/versions/<version>:predict
