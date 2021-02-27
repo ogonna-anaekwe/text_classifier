@@ -23,24 +23,25 @@ class TestPrediction(unittest.TestCase):
         """
         Checks that the version number is at least 1
         """
-        self.assertGreater(args.version, 0)
+        self.assertGreater(args.version, 0, 'version needs to be 1 or higher.')
 
     def test_review(self):
         """
         Checks if the reviews are in a list and that there is at least one review
         """        
-        self.assertEqual(isinstance(self.review_samples, list), True)
-        self.assertGreaterEqual(len(self.review_samples), 1)
+        self.assertIsInstance(self.review_samples, list, 'reviews have to be in a list e.g. [\'horrible movie\', \'great movie\']')
+        self.assertGreater(len(self.review_samples), 0, 'you need at least one review in the list.')
 
     def test_prediction(self):
         """
         Checks if the server gives a response and if the resulting responses are valid
         """      
         result = main.predict_sentiment(self.review_samples)        
-        self.assertIsNotNone(result)      
-        self.assertEqual(isinstance(result, str), False)
-        self.assertEqual(isinstance(result, list), True)
-        self.assertEqual(isinstance(result[0], dict), True)
+        self.assertIsNotNone(result, 'server returned zero prediction for your review.')      
+        self.assertNotIsInstance(result, str, 'server returned invalid response.')        
+        self.assertIsInstance(result, list, 'server did not return a list of predictions.')
+        self.assertGreater(len(result), 0, 'server returned zero valid predictions.')
+        self.assertIsInstance(result[0], dict, 'predictions are not formatted correctly. they should be dictionaries.')
 
 
 if __name__ == '__main__':
