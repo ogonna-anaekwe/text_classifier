@@ -18,6 +18,9 @@ RUN mkdir -p ${MODEL_BASE_PATH}
 ENV MODEL_NAME=text_classifier
 
 # start the model server. this serves the model
+# also pass the path to the model.config file
+# we'll be checking this file every 60 seconds for updates to 
+# the servable model versions
 RUN echo '#!/bin/bash \n\n\
 tensorflow_model_server --port=8500 --rest_api_port=8501 \
 --model_name=${MODEL_NAME} --model_base_path=${MODEL_BASE_PATH}/${MODEL_NAME}/ \

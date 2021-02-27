@@ -28,6 +28,7 @@ docker info --format "{{.OperatingSystem}}"
 ```sh
 source bin/start_server_error.sh
 ```
+In another terminal window, enter:
 ```sh
 source bin/start_server.sh
 ```
@@ -37,19 +38,26 @@ source bin/start_server.sh
 source bin/requirements.sh
 ```
 
-5. Test the model using `cURL` or the `python3 cli`:
+5. Run unit tests:
+```sh
+cd app
+python3 tests/main_test.py <version>
+```
+
+6. Test the model using `cURL` or the `python3 cli`:
 ```sh
 curl -d '{"instances": ["this is such a horrible movie", "this is such a great movie", "this is such a horrible and great movie"]}' \
     -X POST http://localhost:8501/v1/models/text_classifier/versions/<version>:predict
 ```
 **OR**
 ```sh
-python3 app/main.py <version>
+python3 main.py <version>
 ```
-In either case, `<version>` could be `1` or `2` since we currently have only versions 1 and 2 of the model. Update the placeholder accordingly before running either command.
+
+**Note:** `<version>` could be `1` or `2` since we currently have only versions 1 and 2 of the model. Update the placeholders accordingly before running commands.
 
 ### Shut Down
-To shut down the application, open a new terminal window and enter:
+To shut down the application, use:
 ```sh
-source bin/stop_server.sh
+source ../bin/stop_server.sh
 ```

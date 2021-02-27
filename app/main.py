@@ -1,16 +1,11 @@
 import requests
 import json
-import argparse
-from format_logs import format_logs
-
-# create argument parser to invoke script through the command line
-version_parser = argparse.ArgumentParser(description='captures user-inputed version to route the prediction service to the corresponding version.')
-
-# define argument key, type, and help text
-version_parser.add_argument('version', type=int, help='version of the model to serve')
+import format_logs
+import parse_arguments
 
 # parse arguments
-args = version_parser.parse_args()
+args = parse_arguments.parse_arguments()
+
 
 def predict_sentiment(reviews):
     """
@@ -24,7 +19,7 @@ def predict_sentiment(reviews):
     """
     try:               
         global logger
-        logger = format_logs()
+        logger = format_logs.format_logs()
 
         # tf serving rest endpoint
         port = '8501'
