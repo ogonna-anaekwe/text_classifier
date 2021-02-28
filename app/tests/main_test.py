@@ -4,11 +4,11 @@ import os
 # add the app folder to the sys path to help import the main.py file
 sys.path.append(os.path.abspath('../app'))
 import main
-import parse_arguments
+from utils.parse_arguments import parse_arguments
 
 # parse arguments
 global args
-args = parse_arguments.parse_arguments() 
+args = parse_arguments() 
 
 class TestPrediction(unittest.TestCase):   
     def setUp(self):
@@ -42,7 +42,6 @@ class TestPrediction(unittest.TestCase):
         self.assertIsInstance(result, list, 'server did not return a list of predictions.')
         self.assertGreater(len(result), 0, 'server returned zero valid predictions.')
         self.assertIsInstance(result[0], dict, 'predictions are not formatted correctly. they should be dictionaries.')
-
 
 if __name__ == '__main__':
     unittest.main(argv=['first-arg-is-ignored'], exit=False)

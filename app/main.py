@@ -1,11 +1,10 @@
 import requests
 import json
-import format_logs
-import parse_arguments
+from utils.format_logs import format_logs
+from utils.parse_arguments import parse_arguments
 
 # parse arguments
-args = parse_arguments.parse_arguments()
-
+args = parse_arguments()
 
 def predict_sentiment(reviews):
     """
@@ -19,7 +18,7 @@ def predict_sentiment(reviews):
     """
     try:               
         global logger
-        logger = format_logs.format_logs()
+        logger = format_logs()
 
         # tf serving rest endpoint
         port = '8501'
