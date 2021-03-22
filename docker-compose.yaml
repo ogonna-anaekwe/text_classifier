@@ -1,4 +1,4 @@
-version: '3'
+version: '3.2'
 
 services:
   text_classifier:
@@ -8,5 +8,9 @@ services:
         - "8501:8501"
     volumes: 
       - type: bind
-        source: ~/Downloads/content/text_classifier # this is the folder that contains the model/s and model versions
-        target: /models/text_classifier      
+        source: ${HOME}/Downloads/content/text_classifier # this is the folder that contains the model/s and model versions
+        target: /models/text_classifier   
+      - type: bind
+        source: ./model.config
+        target: /models/model.config
+        read_only: true   

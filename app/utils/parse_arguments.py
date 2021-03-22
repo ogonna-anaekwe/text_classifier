@@ -1,7 +1,14 @@
 import argparse
 
 def parse_arguments():
-    # create argument parser to invoke script through the command line
+    """
+    Parse command line (CLI) arguments
+    Parameters:
+        version: version of the model to call
+    Returns:
+        cli arguments
+    """
+    # instantiate argument parser to invoke script through the command line
     version_parser = argparse.ArgumentParser(description='captures user-inputed version to route the prediction service to the corresponding version.')
 
     # define argument key, type, and help text
